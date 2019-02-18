@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6d5f5f4fa6804b02931a10cd5fe6e2e5" Name="Diagram1">
+        <EntityTypeShape EntityType="EventManagementModel.Category" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.Enroll" Width="1.5" PointX="7.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.Event" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.Participant" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.Payment" Width="1.5" PointX="9.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EventManagementModel.SubCategory" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <AssociationConnector Association="EventManagementModel.FK_Category_SubCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_Event_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_Enroll_Event" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_Enroll_Participant" ManuallyRouted="false" />
+        <AssociationConnector Association="EventManagementModel.FK_Payment_Enroll" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

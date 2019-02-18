@@ -1,0 +1,6 @@
+C:\Users\v8967\Desktop\Planet Ganges\C# Training\Event Management\EventManagement\EventManagement.Domain\bin\Debug\EventManagement.Domain.dll
+C:\Users\v8967\Desktop\Planet Ganges\C# Training\Event Management\EventManagement\EventManagement.Domain\bin\Debug\EventManagement.Domain.pdb
+C:\Users\v8967\Desktop\Planet Ganges\C# Training\Event Management\EventManagement\EventManagement.Domain\obj\Debug\EventManagement.Domain.csproj.CoreCompileInputs.cache
+C:\Users\v8967\Desktop\Planet Ganges\C# Training\Event Management\EventManagement\EventManagement.Domain\obj\Debug\EventManagement.Domain.dll
+C:\Users\v8967\Desktop\Planet Ganges\C# Training\Event Management\EventManagement\EventManagement.Domain\obj\Debug\EventManagement.Domain.pdb
+C:\Users\v8967\Desktop\Planet Ganges\C# Training\Event Management\EventManagement\EventManagement.Domain\obj\Debug\EventManagement.Domain.csprojAssemblyReference.cache

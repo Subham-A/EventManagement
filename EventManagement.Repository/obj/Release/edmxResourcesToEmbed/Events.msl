@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EventManagementModelStoreContainer" CdmEntityContainer="EventManagementEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="EventManagementModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="SubCatId" ColumnName="SubCatId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Enrolls">
+      <EntityTypeMapping TypeName="EventManagementModel.Enroll">
+        <MappingFragment StoreEntitySet="Enroll">
+          <ScalarProperty Name="EnrollId" ColumnName="EnrollId" />
+          <ScalarProperty Name="ParticipantId" ColumnName="ParticipantId" />
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="EventManagementModel.Event">
+        <MappingFragment StoreEntitySet="Event">
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="EventPrice" ColumnName="EventPrice" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Participants">
+      <EntityTypeMapping TypeName="EventManagementModel.Participant">
+        <MappingFragment StoreEntitySet="Participant">
+          <ScalarProperty Name="ParticipantId" ColumnName="ParticipantId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="EventManagementModel.Payment">
+        <MappingFragment StoreEntitySet="Payment">
+          <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
+          <ScalarProperty Name="EnrollId" ColumnName="EnrollId" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Mode" ColumnName="Mode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubCategories">
+      <EntityTypeMapping TypeName="EventManagementModel.SubCategory">
+        <MappingFragment StoreEntitySet="SubCategory">
+          <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+          <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetEvents" FunctionName="EventManagementModel.Store.GetEvents">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="EventManagementModel.GetEvents_Result">
+          <ScalarProperty Name="EventId" ColumnName="EventId" />
+          <ScalarProperty Name="EventName" ColumnName="EventName" />
+          <ScalarProperty Name="EventPrice" ColumnName="EventPrice" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="TicketPrice" ColumnName="TicketPrice" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

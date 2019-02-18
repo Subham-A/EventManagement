@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EventManagementModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SubCatId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Enroll">
+    <Key>
+      <PropertyRef Name="EnrollId" />
+    </Key>
+    <Property Name="EnrollId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParticipantId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="EventId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="EventId" />
+    </Key>
+    <Property Name="EventId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EventPrice" Type="int" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TicketPrice" Type="int" Nullable="false" />
+    <Property Name="CategoryId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Date" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Participant">
+    <Key>
+      <PropertyRef Name="ParticipantId" />
+    </Key>
+    <Property Name="ParticipantId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payment">
+    <Key>
+      <PropertyRef Name="TransactionId" />
+    </Key>
+    <Property Name="TransactionId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EnrollId" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="Mode" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubCategory">
+    <Key>
+      <PropertyRef Name="SubCategoryId" />
+    </Key>
+    <Property Name="SubCategoryId" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SubCategoryName" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Category_SubCategory">
+    <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="1" />
+    <End Role="Category" Type="Self.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubCategory">
+        <PropertyRef Name="SubCategoryId" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="SubCatId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Enroll_Event">
+    <End Role="Event" Type="Self.Event" Multiplicity="1" />
+    <End Role="Enroll" Type="Self.Enroll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="EventId" />
+      </Principal>
+      <Dependent Role="Enroll">
+        <PropertyRef Name="EventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Enroll_Participant">
+    <End Role="Participant" Type="Self.Participant" Multiplicity="1" />
+    <End Role="Enroll" Type="Self.Enroll" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participant">
+        <PropertyRef Name="ParticipantId" />
+      </Principal>
+      <Dependent Role="Enroll">
+        <PropertyRef Name="ParticipantId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Event_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Event" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Event">
+        <PropertyRef Name="CategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payment_Enroll">
+    <End Role="Enroll" Type="Self.Enroll" Multiplicity="1" />
+    <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Enroll">
+        <PropertyRef Name="EnrollId" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="EnrollId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="GetEvents" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="EventId" Type="numeric" Mode="In" />
+  </Function>
+  <EntityContainer Name="EventManagementModelStoreContainer">
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Enroll" EntityType="Self.Enroll" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Event" EntityType="Self.Event" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Participant" EntityType="Self.Participant" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubCategory" EntityType="Self.SubCategory" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Category_SubCategory" Association="Self.FK_Category_SubCategory">
+      <End Role="SubCategory" EntitySet="SubCategory" />
+      <End Role="Category" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Enroll_Event" Association="Self.FK_Enroll_Event">
+      <End Role="Event" EntitySet="Event" />
+      <End Role="Enroll" EntitySet="Enroll" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Enroll_Participant" Association="Self.FK_Enroll_Participant">
+      <End Role="Participant" EntitySet="Participant" />
+      <End Role="Enroll" EntitySet="Enroll" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Event_Category" Association="Self.FK_Event_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Event" EntitySet="Event" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payment_Enroll" Association="Self.FK_Payment_Enroll">
+      <End Role="Enroll" EntitySet="Enroll" />
+      <End Role="Payment" EntitySet="Payment" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
